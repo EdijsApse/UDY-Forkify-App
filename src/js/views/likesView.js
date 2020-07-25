@@ -54,3 +54,10 @@ export const deleteLike = id => {
         el.remove();
     }
 }
+
+/**
+ * Deletes all items from like list
+ */
+export const deleteAllLikes = () => {
+    elements.likesList.innerHTML = '';
+}

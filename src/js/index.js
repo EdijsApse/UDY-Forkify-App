@@ -1,6 +1,6 @@
 /**
  * TODO For Latter
- * 1) Delete all likes
+ * 
  * 2) Manually add items to shopping list
  * 3) Save shopping list data in localStorage
  * 4) Improve error handling
@@ -123,6 +123,7 @@ const controlRecipe = async () => {
 ['hashchange', 'load'].forEach(event => {
     window.addEventListener(event, controlRecipe);
 });
+
 /**
  * LIST CONTROLLER
  */
@@ -191,6 +192,19 @@ elements.recipeView.addEventListener('click', e => {
         controlList();
     } else if (e.target.matches('.recipe__love, .recipe__love *')) { //Handling likes event
         controlLike();
+    }
+});
+
+/**
+ * Deletes all likes
+ */
+elements.deleteAllLikes.addEventListener('click', () => {
+    const likes = state.likes.deleteAllLikes();
+    likesView.toggleLikesMenu(likes);
+    likesView.deleteAllLikes();
+    
+    if (state.recipe) {// In case user is viewing some receipe and removes all likes, recipe should toggle like btn
+        likesView.toggleLikeButton(state.likes.isLiked(state.recipe.id));
     }
 });
 

@@ -69,4 +69,13 @@ export default class Likes {
             this.likes = likes;
         }
     }
+
+    /**
+     * Deletes all likes
+     */
+    deleteAllLikes() {
+        this.likes = [];
+        this.persistData();
+        return this.likes;
+    }
 }

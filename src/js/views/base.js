@@ -10,7 +10,8 @@ export const elements = {
     recipeView: document.querySelector('.recipe'),
     shopingList: document.querySelector('.shopping__list'),
     likesMenu: document.querySelector('.likes__field'),
-    likesList: document.querySelector('.likes__list')
+    likesList: document.querySelector('.likes__list'),
+    deleteAllLikes: document.querySelector('.delete-likes')
 };
 
 /**

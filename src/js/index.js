@@ -1,18 +1,18 @@
 /**
  * TODO For Latter
  * 
- * 2) Manually add items to shopping list
+ * 
  * 3) Save shopping list data in localStorage
  * 4) Improve error handling
  * 5) Write calculate method for srvings (better)
  * 6) Predefined keywords for search, based on user history (saved in localStorage)
  * 7) Save laast search in localStorage and render on page load (With receipe if was selected)
- * 8) 
+ * 
  */
 
 import Search from './models/Search';
 import * as searchView from './views/searchView';
-import { elements, renderLoader, removeLoader } from './views/base';
+import { elements, renderLoader, removeLoader, elementStrings } from './views/base';
 import Recipe from './models/Recipe';
 import * as recipeView from './views/recipeView';
 import List from './models/List';
@@ -213,7 +213,50 @@ elements.deleteAllLikes.addEventListener('click', () => {
  */
  window.addEventListener('load', () => {
     state.likes = new Likes();//Create likes object
+    state.list = new List(); //Creates shopping List object
     state.likes.readStorage();//Read saved likes from storage
     likesView.toggleLikesMenu(state.likes.getNumLikes());//Toggle menu button, based on like count
     state.likes.likes.forEach(el => likesView.renderLike(el));//Render likes
+ });
+
+ /**
+  * Delets all input error elements
+  */
+const hideErrors = () => {
+    Array.from(document.querySelectorAll(`.${elementStrings.errorClas}`)).forEach(errElement => errElement.remove());
+}
+
+/**
+ * Add new item to shopping list from form
+ */
+ elements.shoppingItemForm.addEventListener('submit', e => {
+     e.preventDefault();
+
+     const inputs = [document.querySelector('[name="count"]'), document.querySelector('[name="unit"]'), document.querySelector('[name="description"]')];
+
+     const itemValues = inputs.map(input => input.value.trim());
+ 
+     if (state.list.isValidItem(...itemValues)) {
+        const item = state.list.addItem(...itemValues);
+
+        listView.renderItem(item);
+        inputs.forEach(input => input.value = '');
+        
+        hideErrors();
+
+     } else {
+        itemValues.forEach((value, index) => {
+            const errElement = inputs[index].parentElement.querySelector(`.${elementStrings.errorClas}`);
+            
+            if (!value) {
+                if (!errElement) {
+                    inputs[index].insertAdjacentHTML('afterend', `<p class="${elementStrings.errorClas}">Field is required!</p>`);
+                }
+            } else {
+                if (errElement) {
+                    errElement.remove();
+                }
+            }
+        })
+     }
  });

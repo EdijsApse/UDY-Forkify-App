@@ -46,4 +46,24 @@ export default class List {
         //and then we tell we want count of this element to be old count + new count
         this.items.find(el => el.id == id).count += newCount;
     }
+
+    /**
+     * Checks if given values is valid
+     * 
+     * @param {*} count  
+     * @param {*} title
+     * @param {*} description 
+     */
+    isValidItem(count, title, description) {
+
+        if (!title.length) return false;
+        
+        if (count <= 0) return false;
+
+        if (isNaN(count)) return false;
+
+        if (!description.length) return false;
+
+        return true;
+    }
 }

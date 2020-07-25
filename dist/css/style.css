@@ -443,6 +443,7 @@ body {
   .shopping__list {
     list-style: none;
     max-height: 77rem;
+    padding-right: 10px;
     overflow: scroll; }
   .shopping__item {
     display: flex;
@@ -490,7 +491,98 @@ body {
   .shopping__item:hover .shopping__delete {
     opacity: 1;
     visibility: visible; }
+
 .delete-likes {
   margin: 0px auto;
   margin-top: 10px;
+}
+
+.shopping__list::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  border-radius: 10px;
+}
+
+.shopping__list::-webkit-scrollbar-track {
+  background: #ffccbf;
+}
+
+.shopping__list::-webkit-scrollbar-thumb {
+  background: #F59A83;
+}
+
+.shopping__list::-webkit-scrollbar-thumb:hover {
+  background: #F59A83;
+}
+
+.add-shopping-item {
+  text-align: center;
+  margin: 0px auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.shopping-item-form-container {
+  margin-top: 20px;
+  background-color: #fafafa;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.shopping-item-form-container h3 {
+  font-size: 20px;
+  text-align: center;
+  color: #655A56;
+}
+
+.shopping-item-form-container h3::after {
+    content: "";
+    display: block;
+    height: 3px;
+    background-color: #F48982;
+    margin: 0px auto;
+    width: 50px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.shopping-item-form-container .shopping-item-form .form-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #968B87;
+  display: block;
+}
+
+.shopping-item-form-container .shopping-item-form .form-group input, textarea {
+  border-radius: 50px;
+  width: 100%;
+  border: none;
+  box-shadow: 0px 0px 0px 2px #ffccbf;
+  background-color: #FFF;
+  padding: 7px 5px;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 8px;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.shopping-item-form-container .shopping-item-form .form-group input:focus, textarea:focus {
+  box-shadow: 0px 0px 0px 2px #F59A83;
+}
+
+.shopping-item-form-container .shopping-item-form .form-group input::placeholder, textarea::placeholder {
+  color: #DAD0CC;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+.shopping-item-form-container .shopping-item-form .form-group textarea {
+  border-radius: 10px;
+  resize: none;
+  min-height: 100px;
+}
+
+.input-error {
+  color: red;
+  margin-bottom: 10px;
+  font-size: 11px;
 }

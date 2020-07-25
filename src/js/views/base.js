@@ -11,14 +11,16 @@ export const elements = {
     shopingList: document.querySelector('.shopping__list'),
     likesMenu: document.querySelector('.likes__field'),
     likesList: document.querySelector('.likes__list'),
-    deleteAllLikes: document.querySelector('.delete-likes')
+    deleteAllLikes: document.querySelector('.delete-likes'),
+    shoppingItemForm: document.querySelector('.shopping-item-form')
 };
 
 /**
  * Contains used css classes
  */
 export const elementStrings = {
-    loader: 'loader'
+    loader: 'loader',
+    errorClas: 'input-error'
 }
 
 /**
